@@ -1,8 +1,45 @@
 import csv
 import os
+import shutil
+
+import pandas as pd
 
 
-# TODO: encode data
+def encode_condition(f):
+    df = pd.read_csv(f)
+
+    df = pd.concat([df, pd.get_dummies(df['condition'], prefix='is')], axis=1)
+    df.drop(columns=['condition'], inplace=True)
+
+    df.to_csv(f, index=False)
+
+
+def encode_funding_source(f):
+    df = pd.read_csv(f)
+
+    # Rename funding_source values to match allowed format
+    df['funding_source'] = df['funding_source'].replace({
+        'international organization': 'international_organization',
+        'governmental': 'governmental',
+        'non-profit': 'non_profit',
+        'private donors': 'private_donors'
+    })
+
+    df = pd.concat([df, pd.get_dummies(df['funding_source'], prefix='is')], axis=1)
+    df.drop(columns=['funding_source'], inplace=True)
+
+    # Write the encoded dataset back to CSV
+    df.to_csv(f, index=False)
+
+
+def encode_designation(f):
+    df = pd.read_csv(f)
+
+    df = pd.concat([df, pd.get_dummies(df['designation'], prefix='is')], axis=1)
+    df.drop(columns=['designation'], inplace=True)
+
+    df.to_csv(f, index=False)
+
 
 def clean_data(input_file, output_file):
     allowed_funding_sources = {'international organization', 'governmental', 'non-profit', 'private donors'}
@@ -56,3 +93,8 @@ def clean_data(input_file, output_file):
 
 if __name__ == "__main__":
     clean_data('dataset.csv', 'cleaned_dataset.csv')
+
+    shutil.copyfile('cleaned_dataset.csv', 'encoded_dataset.csv')
+    encode_condition('encoded_dataset.csv')
+    encode_funding_source('encoded_dataset.csv')
+    encode_designation('encoded_dataset.csv')
