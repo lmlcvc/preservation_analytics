@@ -1,0 +1,111 @@
+Site_ID,Site_Name,Site_Age_Years,Geographical_Location,Funding_Source,Conservation_Technique,Condition,Designation
+1,Great Pyramid of Giza,4550,Egypt,Governmental,Facade Cleaning,Good,Conserved
+2,Machu Picchu,600,Peru,Non-profit,Structural Stabilization,Fair,Under consideration
+3,Stonehenge,4500,United Kingdom,International Organization,Restoration,Poor,Endangered
+4,Angkor Wat,900,Cambodia,Governmental,Documentation,Good,Conserved
+5,Acropolis of Athens,2500,Greece,Non-profit,Consolidation,Fair,Under consideration
+6,Chichen Itza,1200,Mexico,Private Donors,Reconstruction,Good,Conserved
+7,Ahu Nau Nau,800,Chile,Non-profit,Preservation,Good,Conserved
+8,Colosseum,2000,Italy,Governmental,Conservation,Good,Conserved
+9,City of Sana,1500,Yemen,International Organization,Monitoring,Fair,Under consideration
+10,Taj Mahal,400,India,Governmental,Repairs,Good,Conserved
+11,Pyramids of Teotihuacan,2000,Mexico,Non-profit,Excavation,Good,Conserved
+12,Parthenon,2500,Greece,Governmental,Consolidation,Fair,Under consideration
+13,Tower of London,950,United Kingdom,Private Donors,Preservation,Good,Conserved
+14,Statue of Liberty,140,United States,Governmental,Cleaning,Good,Conserved
+15,Eiffel Tower,130,France,Governmental,Repainting,Good,Conserved
+16,Forbidden City,600,China,Governmental,Structural Stabilization,Good,Conserved
+17,Palmyra,2000,Syria,International Organization,Restoration,Poor,Endangered
+18,Alhambra,1300,Spain,Non-profit,Consolidation,Fair,Under consideration
+19,The Louvre,900,France,Governmental,Cleaning,Good,Conserved
+20,Red Fort,370,India,Governmental,Documentation,Fair,Under consideration
+21,Mount Rushmore,80,United States,Private Donors,Preservation,Good,Conserved
+22,Ayers Rock,60000,Australia,Non-profit,Conservation,Good,Conserved
+23,Jerusalem Old City,4000,Israel,Governmental,Repairs,Fair,Under consideration
+24,Ahu Akivi,800,Chile,International Organization,Preservation,Good,Conserved
+25,Hagia Sophia,1500,Turkey,Governmental,Reconstruction,Poor,Endangered
+26,Mesa Verde,800,United States,Non-profit,Excavation,Good,Conserved
+27,Bagan Temples,1000,Myanmar,Governmental,Monitoring,Good,Conserved
+28,Carnac Stones,6000,France,Private Donors,Consolidation,Fair,Under consideration
+29,Château de Versailles,350,France,Governmental,Cleaning,Good,Conserved
+30,Petronas Towers,25,Malaysia,Governmental,Repainting,Good,Conserved
+31,Ancient City of Petra,2000,Jordan,International Organization,Restoration,Fair,Under consideration
+32,Palace of Westminster,1000,United Kingdom,Private Donors,Preservation,Good,Conserved
+33,Borobudur Temple,1200,Indonesia,Non-profit,Consolidation,Fair,Under consideration
+34,Golden Temple,415,India,Governmental,Documentation,Good,Conserved
+35,Pyramids of Abusir,3000,Egypt,Governmental,Structural Stabilization,Fair,Conserved
+36,Angkor Thom,900,Cambodia,International Organization,Preservation,Good,Conserved
+37,Arc de Triomphe,210,France,Governmental,Cleaning,Good,Conserved
+38,Pompeii Ruins,2000,Italy,Non-profit,Excavation,Good,Conserved
+39,Christ the Redeemer,90,Brazil,Governmental,Reconstruction,Fair,Under consideration
+40,Machu Picchu,600,Peru,Governmental,Monitoring,Good,Conserved
+41,Giant's Causeway,40000,United Kingdom,Private Donors,Preservation,Good,Conserved
+42,Sistine Chapel,500,Vatican City,International Organization,Restoration,Poor,Endangered
+43,Potala Palace,1300,China,Governmental,Consolidation,Fair,Under consideration
+44,Lalibela Churches,900,Ethiopia,Non-profit,Documentation,Fair,Under consideration
+45,Toltec Pyramids,2000,Mexico,Governmental,Repairs,Good,Conserved
+46,Mount Fuji,100000,Japan,Non-profit,Preservation,Good,Conserved
+47,Tulum Ruins,1000,Mexico,International Organization,Reconstruction,Good,Conserved
+48,Great Wall of China,2300,China,Governmental,Conservation,Good,Conserved
+49,Brooklyn Bridge,140,United States,Governmental,Preservation,Good,Conserved
+50,Bibi ka Maqbara,400,India,Non-profit,Restoration,Good,Under Consideration
+51,Dubrovnik City Walls,1000,Croatia,Governmental,Conservation,Good,Conserved
+52,Plitvice Lakes National Park,71,Croatia,Non-profit,Preservation,Good,Conserved
+53,Diocletian's Palace,1700,Croatia,Private Donors,Restoration,Fair,Under consideration
+54,St. James Cathedral,800,Croatia,International Organization,Documentation,Good,Conserved
+55,Krka National Park,40,Croatia,Non-profit,Conservation,Good,Conserved
+56,Zadar Old Town,920,Croatia,Governmental,Preservation,Good,Conserved
+57,Hvar Fortress,750,Croatia,Private Donors,Reconstruction,Fair,Under consideration
+58,Rector's Palace,550,Croatia,Governmental,Structural Stabilization,Good,Conserved
+59,Plomin Old Town,900,Croatia,Non-profit,Preservation,Good,Conserved
+60,Euphrasian Basilica,1700,Croatia,International Organization,Restoration,Fair,Under consideration
+61,Old Bridge of Mostar,427,Bosnia and Herzegovina,Non-profit,Preservation,Good,Conserved
+62,Stari Grad,450,Bosnia and Herzegovina,Governmental,Restoration,Fair,Under consideration
+63,Tvrdoš Monastery,600,Bosnia and Herzegovina,Private Donors,Conservation,Good,Conserved
+64,Stecak Tombstones,800,Bosnia and Herzegovina,International Organization,Documentation,Good,Conserved
+65,Sarajevo City Hall,130,Bosnia and Herzegovina,Governmental,Reconstruction,Fair,Under consideration
+66,Blagaj Tekija,500,Bosnia and Herzegovina,Non-profit,Preservation,Good,Conserved
+67,Travnik Old Town,600,Bosnia and Herzegovina,Governmental,Structural Stabilization,Good,Conserved
+68,Baščaršija,600,Bosnia and Herzegovina,Private Donors,Conservation,Good,Conserved
+69,Počitelj Old Town,600,Bosnia and Herzegovina,International Organization,Preservation,Good,Conserved
+70,Konjic Bridge,350,Bosnia and Herzegovina,Non-profit,Restoration,Fair,Under consideration
+71,Belgrade Fortress,279,Serbia, Governmental, Preservation, Good, Conserved
+72,Đavolja Varoš,2000000,Serbia, Non-profit, Conservation, Good, Conserved
+73,Smederevo Fortress,680,Serbia, Private Donors, Restoration, Fair, Under consideration
+74,Studenica Monastery,900,Serbia, International Organization, Documentation, Good, Conserved
+75,Golubac Fortress,700,Serbia, Governmental, Reconstruction, Fair, Under consideration
+76,Church of Saint Sava,35,Serbia, Non-profit, Preservation, Good, Conserved
+77,Felix Romuliana,1700, Serbia, Governmental, Structural Stabilization, Good, Conserved
+78,Drvengrad,20, Serbia, Private Donors, Conservation, Good, Conserved
+79,Golija Monastery,800, Serbia, International Organization, Restoration, Fair, Under consideration
+80,Novi Sad Synagogue,115, Serbia, Governmental, Documentation, Good, Conserved
+81,Ljubljana Castle,1000,Slovenia,Governmental,Preservation,Good,Conserved
+82,Škocjan Caves,2000000,Slovenia,Non-profit,Conservation,Good,Conserved
+83,Predjama Castle,850,Slovenia,Private Donors,Restoration,Fair,Under consideration
+84,Old Vine House,450,Slovenia,International Organization,Documentation,Good,Conserved
+85,Idrija Mercury Mine,535,Slovenia,Governmental,Reconstruction,Fair,Under consideration
+86,Stična Abbey,889,Slovenia,Non-profit,Preservation,Good,Conserved
+87,Sečovlje Salt Pans,820,Slovenia,Governmental,Structural Stabilization,Good,Conserved
+88,Lipica Stud Farm,444,Slovenia,Private Donors,Conservation,Good,Conserved
+89,Škofja Loka Castle,815,Slovenia,International Organization,Restoration,Fair,Under consideration
+90,Postojna Cave,206,Slovenia,Governmental,Documentation,Good,Conserved
+91,Kotor Old Town,1100,Montenegro,Governmental,Preservation,Good,Conserved
+92,Durmitor National Park,72,Montenegro,Non-profit,Conservation,Good,Conserved
+93,Ostrog Monastery,320,Montenegro,Private Donors,Restoration,Fair,Under consideration
+94,Stari Bar,1000,Montenegro,International Organization,Documentation,Good,Conserved
+95,Medieval Monuments in Kosovo,1100,Montenegro,Governmental,Reconstruction,Fair,Under consideration
+96,Lake Skadar,47,Montenegro,Non-profit,Preservation,Good,Conserved
+97,Cetinje Monastery,323,Montenegro,Governmental,Structural Stabilization,Good,Conserved
+98,Plav Lake,1150,Montenegro,Private Donors,Conservation,Good,Conserved
+99,Herceg Novi Old Town,650,Montenegro,International Organization,Restoration,Fair,Under consideration
+100,Moraca Monastery,834,Montenegro,Governmental,Documentation,Good,Conserved
+101,Ohrid Old Town,1100,Macedonia,Governmental,Preservation,Good,Conserved
+102,Galičica National Park,66,Macedonia,Non-profit,Conservation,Good,Conserved
+103,St. Panteleimon Monastery,1140,Macedonia,Private Donors,Restoration,Fair,Under consideration
+104,Kokino,3800,Macedonia,International Organization,Documentation,Good,Conserved
+105,Markovi Kuli,1080,Macedonia,Governmental,Reconstruction,Fair,Under consideration
+106,Mavrovo National Park,75,Macedonia,Non-profit,Preservation,Good,Conserved
+107,Skopje Old Bazaar,650,Macedonia,Governmental,Structural Stabilization,Good,Conserved
+108,Heraclea Lyncestis,2350,Macedonia,Private Donors,Conservation,Good,Conserved
+109,Matka Canyon,1000,Macedonia,International Organization,Restoration,Fair,Under consideration
+110,Stobi,2200,Macedonia,Governmental,Documentation,Good,Conserved
