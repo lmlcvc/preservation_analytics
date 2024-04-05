@@ -91,6 +91,30 @@ def clean_data(input_file, output_file):
                     writer.writerow(cleaned_row)
 
 
+def calculate_summary_statistics(dataset_file):
+    df = pd.read_csv(dataset_file)
+    numerical_columns = [col for col in df.columns if col != 'site_id']
+    df_filtered = df[df['site_age_years'] <= 5000]
+
+    # Calculate summary statistics for numerical columns
+    summary_stats_numerical = df[numerical_columns].describe()
+
+    # Calculate frequency of categorical values in selected columns
+    categorical_columns = ['geographical_location', 'funding_source', 'conservation_technique', 'condition', 'designation']
+    freq_categorical = {col: df[col].value_counts() for col in categorical_columns}
+
+    return summary_stats_numerical, freq_categorical, df_filtered
+
+def display_summary_statistics(summary_stats_numerical, freq_categorical):
+    print("Summary Statistics for Numerical Columns (excluding 'site_id'):")
+    print(summary_stats_numerical)
+
+    print("\nFrequency of Categorical Values:")
+    for col, freq in freq_categorical.items():
+        print(f"\nColumn: {col}")
+        print(freq)
+
+
 if __name__ == "__main__":
     clean_data('dataset.csv', 'cleaned_dataset.csv')
 
@@ -98,3 +122,6 @@ if __name__ == "__main__":
     encode_condition('encoded_dataset.csv')
     encode_funding_source('encoded_dataset.csv')
     encode_designation('encoded_dataset.csv')
+
+    summary_stats_numerical, freq_categorical, df_filtered = calculate_summary_statistics('cleaned_dataset.csv')
+    display_summary_statistics(summary_stats_numerical, freq_categorical)
