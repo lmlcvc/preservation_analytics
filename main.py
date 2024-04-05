@@ -2,6 +2,8 @@ import csv
 import os
 
 
+# TODO: encode data
+
 def clean_data(input_file, output_file):
     allowed_funding_sources = {'international organization', 'governmental', 'non-profit', 'private donors'}
     allowed_conditions = {'good', 'fair', 'poor'}
@@ -28,27 +30,28 @@ def clean_data(input_file, output_file):
                 writer.writerow(header)
 
                 for row in reader:
-                    # Clean data by stripping whitespace
-                    row = [col.strip() for col in row]
+                    # Replacing empty strings with None
+                    cleaned_row = [None if value == '' or value.lower() == 'null' else value for value in row]
 
                     # Convert specific column values to lowercase
                     funding_source_index = header.index('funding_source')
                     condition_index = header.index('condition')
                     designation_index = header.index('designation')
-                    row[funding_source_index] = row[funding_source_index].lower()
-                    row[condition_index] = row[condition_index].lower()
-                    row[designation_index] = row[designation_index].lower()
+                    cleaned_row[funding_source_index] = cleaned_row[funding_source_index].lower()
+                    cleaned_row[condition_index] = cleaned_row[condition_index].lower()
+                    cleaned_row[designation_index] = cleaned_row[designation_index].lower()
 
                     # Check if values are allowed for specific columns
-                    if row[funding_source_index] not in allowed_funding_sources:
-                        print(f"Warning: Invalid funding source '{row[funding_source_index]}' found in row: {row}")
-                    if row[condition_index] not in allowed_conditions:
-                        print(f"Warning: Invalid condition '{row[condition_index]}' found in row: {row}")
-                    if row[designation_index] not in allowed_designations:
-                        print(f"Warning: Invalid designation '{row[designation_index]}' found in row: {row}")
+                    if cleaned_row[funding_source_index] not in allowed_funding_sources:
+                        print(
+                            f"Warning: Invalid funding source '{cleaned_row[funding_source_index]}' found in row: {row}")
+                    if cleaned_row[condition_index] not in allowed_conditions:
+                        print(f"Warning: Invalid condition '{cleaned_row[condition_index]}' found in row: {row}")
+                    if cleaned_row[designation_index] not in allowed_designations:
+                        print(f"Warning: Invalid designation '{cleaned_row[designation_index]}' found in row: {row}")
 
                     # Write the cleaned row to the output file
-                    writer.writerow(row)
+                    writer.writerow(cleaned_row)
 
 
 if __name__ == "__main__":
