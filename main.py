@@ -3,6 +3,8 @@ import os
 import shutil
 
 import pandas as pd
+from matplotlib import pyplot as plt
+import seaborn as sns
 
 
 def encode_condition(f):
@@ -100,10 +102,12 @@ def calculate_summary_statistics(dataset_file):
     summary_stats_numerical = df[numerical_columns].describe()
 
     # Calculate frequency of categorical values in selected columns
-    categorical_columns = ['geographical_location', 'funding_source', 'conservation_technique', 'condition', 'designation']
+    categorical_columns = ['geographical_location', 'funding_source', 'conservation_technique', 'condition',
+                           'designation']
     freq_categorical = {col: df[col].value_counts() for col in categorical_columns}
 
     return summary_stats_numerical, freq_categorical, df_filtered
+
 
 def display_summary_statistics(summary_stats_numerical, freq_categorical):
     print("Summary Statistics for Numerical Columns (excluding 'site_id'):")
@@ -113,6 +117,60 @@ def display_summary_statistics(summary_stats_numerical, freq_categorical):
     for col, freq in freq_categorical.items():
         print(f"\nColumn: {col}")
         print(freq)
+
+
+def visualize_data(dataset_file):
+    df = pd.read_csv(dataset_file)
+    if not os.path.exists('images'):
+        os.makedirs('images')
+
+        # Filter out sites older than 5000 years
+        df_filtered = df[df['site_age_years'] <= 5000]
+
+        # Histogram for site_age_years
+        plt.figure(figsize=(10, 6))
+        sns.histplot(data=df_filtered, x='site_age_years', bins=20, kde=True)
+        plt.title('Distribution of Site Ages (site_age_years)')
+        plt.xlabel('Site Age (years)')
+        plt.ylabel('Frequency')
+        plt.savefig('images/site_age_years_histogram.png')
+        plt.close()
+
+        # Box plot for site_age_years
+        plt.figure(figsize=(10, 6))
+        sns.boxplot(data=df_filtered, x='site_age_years')
+        plt.title('Box Plot of Site Ages (site_age_years)')
+        plt.xlabel('Site Age (years)')
+        plt.savefig('images/site_age_years_boxplot.png')
+        plt.close()
+
+        # Bar plot for funding_source
+        plt.figure(figsize=(10, 6))
+        sns.countplot(data=df_filtered, x='funding_source')
+        plt.title('Frequency of Funding Sources')
+        plt.xlabel('Funding Source')
+        plt.ylabel('Frequency')
+        plt.xticks(rotation=0)
+        plt.savefig('images/funding_source_barplot.png')
+        plt.close()
+
+        # Bar plot for condition
+        plt.figure(figsize=(10, 6))
+        sns.countplot(data=df_filtered, x='condition')
+        plt.title('Frequency of Conditions')
+        plt.xlabel('Condition')
+        plt.ylabel('Frequency')
+        plt.savefig('images/condition_barplot.png')
+        plt.close()
+
+        # Bar plot for designation
+        plt.figure(figsize=(10, 6))
+        sns.countplot(data=df_filtered, x='designation')
+        plt.title('Frequency of Designations')
+        plt.xlabel('Designation')
+        plt.ylabel('Frequency')
+        plt.savefig('images/designation_barplot.png')
+        plt.close()
 
 
 if __name__ == "__main__":
@@ -125,3 +183,5 @@ if __name__ == "__main__":
 
     summary_stats_numerical, freq_categorical, df_filtered = calculate_summary_statistics('cleaned_dataset.csv')
     display_summary_statistics(summary_stats_numerical, freq_categorical)
+
+    visualize_data('cleaned_dataset.csv')
