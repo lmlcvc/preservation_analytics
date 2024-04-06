@@ -6,6 +6,8 @@ import pandas as pd
 from matplotlib import pyplot as plt
 import seaborn as sns
 
+age_threshold = 5000
+
 
 def encode_condition(f):
     df = pd.read_csv(f)
@@ -96,7 +98,7 @@ def clean_data(input_file, output_file):
 def calculate_summary_statistics(dataset_file):
     df = pd.read_csv(dataset_file)
     numerical_columns = [col for col in df.columns if col != 'site_id']
-    df_filtered = df[df['site_age_years'] <= 5000]
+    df_filtered = df[df['site_age_years'] <= age_threshold]
 
     # Calculate summary statistics for numerical columns
     summary_stats_numerical = df[numerical_columns].describe()
@@ -124,13 +126,13 @@ def visualize_data(dataset_file):
     if not os.path.exists('images'):
         os.makedirs('images')
 
-        # Filter out sites older than 5000 years
-        df_filtered = df[df['site_age_years'] <= 5000]
+        # Filter out sites older than age_threshold years
+        df_filtered = df[df['site_age_years'] <= age_threshold]
 
         # Histogram for site_age_years
         plt.figure(figsize=(10, 6))
         sns.histplot(data=df_filtered, x='site_age_years', bins=20, kde=True)
-        plt.title('Distribution of Site Ages (site_age_years)')
+        plt.title(f'Distribution of Site Ages (site_age_years)')
         plt.xlabel('Site Age (years)')
         plt.ylabel('Frequency')
         plt.savefig('images/site_age_years_histogram.png')
@@ -208,6 +210,40 @@ def examine_correlation(dataset_file):
     plt.close()
 
 
+def plot_trends(dataset_file, age_interval=250):
+    df = pd.read_csv(dataset_file)
+
+    # Group the data by age bins and observed variable, and count occurrences
+    df_filtered = df[df['site_age_years'] <= age_threshold]
+    age_bins = pd.cut(df_filtered['site_age_years'], bins=range(0, age_threshold, age_interval))
+    age_condition_counts = df_filtered.groupby([age_bins, 'condition']).size().unstack(fill_value=0)
+    age_designation_counts = df_filtered.groupby([age_bins, 'designation']).size().unstack(fill_value=0)
+
+    # Plot bar charts for each age bin showing count of each condition
+    age_condition_counts.plot(kind='bar', stacked=True, figsize=(12, 6), color=['lightgreen', 'skyblue', 'salmon'])
+    plt.title('Condition counts by age ranges')
+    plt.xlabel('Range (years)')
+    plt.ylabel('Count')
+    plt.xticks(rotation=45)
+    plt.legend(title='Condition', labels=['Good', 'Fair', 'Poor'])
+    plt.tight_layout()
+    plt.gca().get_yaxis().set_major_formatter(plt.FuncFormatter(lambda x, loc: "{:,}".format(int(x))))
+    plt.savefig('images/trends_condition_counts_by_age.png')
+    plt.close()
+
+    # Plot bar charts for each age bin showing count of each designation
+    age_designation_counts.plot(kind='bar', stacked=True, figsize=(12, 6), color=['lightgreen', 'skyblue', 'salmon'])
+    plt.title('Designation counts by age ranges')
+    plt.xlabel('Range (years)')
+    plt.ylabel('Count')
+    plt.xticks(rotation=45)
+    plt.legend(title='Designation', labels=['Conserved', 'Under Consideration', 'Endangered'])
+    plt.tight_layout()
+    plt.gca().get_yaxis().set_major_formatter(plt.FuncFormatter(lambda x, loc: "{:,}".format(int(x))))
+    plt.savefig('images/trends_designation_counts_by_age.png')
+    plt.close()
+
+
 if __name__ == "__main__":
     clean_data('dataset.csv', 'cleaned_dataset.csv')
 
@@ -221,3 +257,4 @@ if __name__ == "__main__":
 
     visualize_data('cleaned_dataset.csv')
     examine_correlation('encoded_dataset.csv')
+    plot_trends('cleaned_dataset.csv')
