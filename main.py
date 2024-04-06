@@ -173,6 +173,41 @@ def visualize_data(dataset_file):
         plt.close()
 
 
+def examine_correlation(dataset_file):
+    df = pd.read_csv(dataset_file)
+
+    # Select columns for correlation analysis
+    funding_sources_condition = df[
+        ['is_international_organization', 'is_governmental', 'is_non_profit', 'is_private_donors', 'is_good', 'is_fair',
+         'is_poor']]
+    designation_condition = df[
+        ['is_conserved', 'is_under consideration', 'is_endangered', 'is_good', 'is_fair', 'is_poor']]
+
+    # Calculate correlation matrices
+    correlation_matrix_fs_cond = funding_sources_condition.corr().loc[
+        ['is_international_organization', 'is_governmental', 'is_non_profit', 'is_private_donors'], ['is_good',
+                                                                                                     'is_fair',
+                                                                                                     'is_poor']]
+    correlation_matrix_desig_cond = designation_condition.corr().loc[
+        ['is_conserved', 'is_under consideration', 'is_endangered'], ['is_good', 'is_fair', 'is_poor']]
+
+    # Plot correlation matrix for funding sources and condition
+    plt.figure(figsize=(8, 6))
+    sns.heatmap(correlation_matrix_fs_cond, annot=True, cmap='coolwarm', fmt=".2f", linewidths=0.5)
+    plt.title('Correlation Matrix: Funding Sources and Condition')
+    plt.tight_layout()
+    plt.savefig('images/correlation_funding_condition.png')
+    plt.close()
+
+    # Plot correlation matrix for designation and condition
+    plt.figure(figsize=(8, 6))
+    sns.heatmap(correlation_matrix_desig_cond, annot=True, cmap='coolwarm', fmt=".2f", linewidths=0.5)
+    plt.title('Correlation Matrix: Designation and Condition')
+    plt.tight_layout()
+    plt.savefig('images/correlation_designation_condition.png')
+    plt.close()
+
+
 if __name__ == "__main__":
     clean_data('dataset.csv', 'cleaned_dataset.csv')
 
@@ -185,3 +220,4 @@ if __name__ == "__main__":
     display_summary_statistics(summary_stats_numerical, freq_categorical)
 
     visualize_data('cleaned_dataset.csv')
+    examine_correlation('encoded_dataset.csv')
