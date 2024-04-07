@@ -8,6 +8,10 @@ import seaborn as sns
 
 age_threshold = 5000
 
+modern_range = (0, 500)
+medieval_range = (500, 1500)
+ancient_range = (1500, 5000)
+
 
 def encode_condition(f):
     df = pd.read_csv(f)
@@ -43,6 +47,27 @@ def encode_designation(f):
     df.drop(columns=['designation'], inplace=True)
 
     df.to_csv(f, index=False)
+
+
+def categorize_age(age):
+    if age < modern_range[1]:
+        return 'modern'
+    elif medieval_range[0] <= age < medieval_range[1]:
+        return 'medieval'
+    elif ancient_range[0] <= age < ancient_range[1]:
+        return 'ancient'
+    else:
+        return 'prehistoric'
+
+
+def encode_period(f):
+    df = pd.read_csv(f)
+
+    df['is'] = df['site_age_years'].apply(categorize_age)
+    df_encoded = pd.get_dummies(df, columns=['is'])
+
+    # Save the modified dataset
+    df_encoded.to_csv(f, index=False)
 
 
 def clean_data(input_file, output_file):
@@ -248,6 +273,7 @@ if __name__ == "__main__":
     clean_data('dataset.csv', 'cleaned_dataset.csv')
 
     shutil.copyfile('cleaned_dataset.csv', 'encoded_dataset.csv')
+    encode_period('encoded_dataset.csv')
     encode_condition('encoded_dataset.csv')
     encode_funding_source('encoded_dataset.csv')
     encode_designation('encoded_dataset.csv')
